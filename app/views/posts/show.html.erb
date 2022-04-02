@@ -1,0 +1,14 @@
+<div class="col-md-12">
+  <article class="blog-post">
+    <h2 class="blog-post-title"><%= @post.title %></h2>
+    <p class="blog-post-meta">
+      <%= date_str(@post.created_at) %> by <a href="#"><%= @post.user.name %></a>
+    </p>
+    <p>
+      <%= simple_format @post.body %>
+    </p>
+  </article>
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Posts', posts_path %>
+</div>

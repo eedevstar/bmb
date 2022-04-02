@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Barebone Message Board</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+      <main role="main">
+        <div class="row g-5 mt-2">
+          <% if notice %>
+            <div class="alert alert-primary" role="alert">
+              <%= notice %>
+            </div>
+          <% end %>
+          <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

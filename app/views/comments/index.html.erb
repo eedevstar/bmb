@@ -1,0 +1,30 @@
+<div class="col-md-12">
+  <% if notice %>
+    <div class="alert alert-primary" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+  <article class="blog-post">
+    <h2 class="blog-post-title"><%= @post.title %></h2>
+    <p class="blog-post-meta">
+      <%= date_str(@post.created_at) %> by <a href="#"><%= @post.user_id %></a>
+    </p>
+    <p>
+      <%= @post.body %>
+    </p>
+  </article>
+
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Posts', posts_path %>
+  <hr />
+
+  <div class="row">
+    <div class="offset-md-2 col-md-10">
+      <h2>Add a comment:</h2>
+      <%= render "form" %>
+      <hr />
+      <%= render @comments %>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+</div>
