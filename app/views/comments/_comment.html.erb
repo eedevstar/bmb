@@ -1,3 +1,4 @@
+<% unless comment.user_id.nil? %>
 <div class="card mb-2">
   <div class="card-body">
     <%= simple_format comment.body %>
@@ -5,3 +6,4 @@
     by <%= comment.user.name %>, <%= date_str(comment.created_at) %>
   </div>
 </div>
+<% end %>

@@ -8,9 +8,8 @@ class Post < ApplicationRecord
   default_scope { order(created_at: :desc) }
   scope :user_records, -> (user_id) { where(user_id: user_id) }
 
-  def post_time
-    created_at.strftime("%B %e, %Y")
-  end
-
+  after_create_commit { broadcast_prepend_to "posts" }
+  after_destroy_commit { broadcast_remove_to "posts" }
+  after_update_commit { broadcast_replace_to "posts" }
 
 end

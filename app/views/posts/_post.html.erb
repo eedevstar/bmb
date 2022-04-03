@@ -1,0 +1,17 @@
+<%= turbo_frame_tag dom_id(post) do %>
+  <article class="blog-post">
+    <h2 class="blog-post-title">
+      <%= link_to post.title, post_comments_path(post) %>
+    </h2>
+    <p class="blog-post-meta">
+      <%= date_str(post.created_at) %> by <%= post.user.name %>
+    </p>
+    <p>
+      <%= simple_format post.body %>
+    </p>
+
+    <%= render "posts/post_actions", post: post %>
+
+    <hr>
+  </article>
+<% end %>

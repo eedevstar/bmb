@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all.order(created_at: :desc)
     @pagy, @posts = pagy(Post.all, items: 2)
+    @post = Post.new
   end
 
   # GET /posts/1 or /posts/1.json
@@ -27,9 +28,13 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
+        format.html { redirect_to posts_url, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
+        format.turbo_stream { # route turbo_stream validation errors
+          render turbo_stream: turbo_stream.replace(
+                  @post, partial: "posts/modal_form",
+                  locals: { post: @post}) }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -40,7 +45,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+        format.html { redirect_to @post, notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }

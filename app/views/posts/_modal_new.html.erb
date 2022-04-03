@@ -1,0 +1,11 @@
+<%= link_to "#", class: 'btn btn-sm btn-outline-primary', data: { toggle: "modal", target: "#postModal" } do %>
+New Post
+<% end %>
+
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= render "modal_form", post: post %>
+    </div>
+  </div>
+</div>

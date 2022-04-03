@@ -1,0 +1,41 @@
+<%= form_with(model: post, id: dom_id(post)) do |form| %>
+
+  <div class="modal-header">
+    <h5 class="modal-title">New Post</h5>
+  </div>
+
+  <div class="modal-body">
+    <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :body, class: "form-label" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <div class="actions">
+      <%= form.submit class: "btn btn-sm btn-outline-success" %>
+      <button type="button" class="btn btn-sm btn-outline-danger" data-dismiss="modal" aria-label="Close">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+<% end %>

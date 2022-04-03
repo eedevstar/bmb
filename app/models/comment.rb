@@ -4,8 +4,6 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true
 
-  def comment_time
-    created_at.strftime("%B %e, %Y")
-  end
+  after_create_commit { broadcast_prepend_to "comments" }
 
 end

@@ -1,7 +1,9 @@
 <div class="col-md-10 mx-auto">
   <h1>Editing Post</h1>
 
-  <%= render 'form', post: @post %>
+  <%= turbo_frame_tag dom_id(@post) do %>
+    <%= render 'form', post: @post %>
+  <% end %>
 
   <%= link_to 'Show', @post %> |
   <%= link_to 'Back', posts_path %>
