@@ -5,17 +5,6 @@
   </div>
 
   <div class="modal-body">
-    <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
 
     <div class="field">
       <%= form.label :title, class: "form-label" %>
@@ -24,8 +13,18 @@
 
     <div class="field">
       <%= form.label :body, class: "form-label" %>
-      <%= form.text_area :body, class: "form-control" %>
+      <%= form.text_area :body, rows: 6, class: "form-control" %>
     </div>
+
+    <% if post.errors.any? %>
+    <div id="error_explanation" class="text-danger">
+      <ul>
+        <% post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 
   </div>
 

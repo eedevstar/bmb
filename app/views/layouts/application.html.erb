@@ -20,11 +20,6 @@
       </header>
       <main role="main">
         <div class="row g-5 mt-2">
-          <% if notice %>
-            <div class="alert alert-primary" role="alert">
-              <%= notice %>
-            </div>
-          <% end %>
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
       </main>

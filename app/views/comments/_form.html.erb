@@ -1,9 +1,21 @@
-<%= form_with model: [ @post, @post.comments.build ] do |form| %>
-  <p>
-    <%= form.label :body, class: "form-label" %><br>
+<%= form_with(model: [ post, comment ], id: dom_id(comment)) do |form| %>
+  <div class="field">
+    <%= form.label :body, class: "form-label" %>
     <%= form.text_area :body, class: "form-control" %>
-  </p>
-  <p>
+  </div>
+
+  <% if comment.errors.any? %>
+    <div id="error_explanation" class="text-danger">
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions mt-2">
     <%= form.submit "Create Comment", class: "btn btn-primary" %>
-  </p>
+  </div>
+
 <% end %>

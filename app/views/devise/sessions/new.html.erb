@@ -1,4 +1,4 @@
-<div class="col-md-4 mx-auto">
+<div class="col-md-6 col-sx-10 mx-auto">
   <h2>Log in</h2>
 
   <%= form_for(resource, as: resource_name, data: { turbo: false }, url: session_path(resource_name)) do |f| %>
@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
 

@@ -6,17 +6,11 @@
 
   <div class="field">
     <%= form.label :body, class: "form-label" %>
-    <%= form.text_area :body, class: "form-control" %>
-  </div>
-
-  <div class="actions mt-2">
-    <%= form.submit "Save", class: "btn btn-primary" %>
+    <%= form.text_area :body, rows: 6, class: "form-control" %>
   </div>
 
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div id="error_explanation" class="text-danger">
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -24,4 +18,12 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="actions mt-2">
+    <%= form.submit "Save", class: "btn btn-sm btn-outline-success" %>
+    <!-- <%= link_to "Cancel", post_path(post),
+                class: "btn btn-sm btn-outline-danger" %> -->
+  </div>
+
+  <hr />
 <% end %>
