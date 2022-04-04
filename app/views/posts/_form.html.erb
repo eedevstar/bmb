@@ -20,9 +20,7 @@
   <% end %>
 
   <div class="actions mt-2">
-    <%= form.submit "Save", class: "btn btn-sm btn-outline-success" %>
-    <!-- <%= link_to "Cancel", post_path(post),
-                class: "btn btn-sm btn-outline-danger" %> -->
+    <%= form.submit "Save", id: dom_id(post, :save),  class: "btn btn-sm btn-outline-success" %>
   </div>
 
   <hr />

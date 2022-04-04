@@ -6,9 +6,9 @@
   </div>
   <div class="col-4 d-flex justify-content-end align-items-center">
     <% if user_signed_in? %>
-      <%= link_to "Log Out", destroy_user_session_path, :class => "btn btn-sm btn-outline-secondary" %>
-    <% else %>
-      <%= link_to "Log In", new_user_session_path, :class => "btn btn-sm btn-outline-secondary" %>
+      <%= link_to "Log out", destroy_user_session_path, :class => "btn btn-sm btn-outline-secondary" %>
+    <% elsif !current_page?(new_user_session_path) %>
+      <%= link_to "Log in", new_user_session_path, :class => "btn btn-sm btn-outline-secondary" %>
     <% end %>
   </div>
 </div>

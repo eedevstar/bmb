@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(post) do %>
   <article class="blog-post">
     <h2 class="blog-post-title">
-      <%= link_to post.title, post_comments_path(post), data: { turbo: false } %>
+      <%= link_to post.title, post_comments_path(post), id: dom_id(post, :title), data: { turbo: false }, class: "link-title" %>
     </h2>
     <p class="blog-post-meta">
       <%= date_str(post.created_at) %> by <%= post.user.name %>
@@ -12,9 +12,7 @@
     <p>
       Comments: <%= post.comments.count %>
     </p>
-
-
-    <% if current_user.present? %>
+    <% if current_user&.id == post.user.id  %>
       <%= render "posts/post_actions", post: post %>
     <% end %>
     <hr>

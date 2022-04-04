@@ -2,9 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
-  default_scope { order(created_at: :asc) }
-
-  validates :body, presence: true
+  validates :body, presence: true, length: { minimum: 5 }
 
   after_create_commit { broadcast_append_to "comments" }
 end

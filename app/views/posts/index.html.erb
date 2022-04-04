@@ -2,7 +2,7 @@
   <%= turbo_stream_from :posts %>
 
   <%= turbo_frame_tag :posts do %>
-    <%= render @posts %>
+    <%= render @posts, locals: { current_user: current_user } %>
     <% if @posts.count > 0 %>
       <%== pagy_bootstrap_nav(@pagy) %>
     <% else %>
@@ -16,7 +16,7 @@
       <h4 class="fst-italic">Welcome <%= current_user.name %></h4>
       <hr/>
       <p class="mb-2">
-        My Posts: <%= Post.user_records(current_user.id).count %>
+        My Posts: <%= current_user.posts.count %>
       </p>
       <%= render "modal_new", post: @post %>
       <hr/>

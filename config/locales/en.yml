@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      post:
+        body: "Content"
+      comment:
+        body: "Comment"
