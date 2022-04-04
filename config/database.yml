@@ -81,7 +81,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: bmb_production
-  username: bmb
-  password: <%= ENV['BMB_DATABASE_PASSWORD'] %>
+  url: <%= ENV.fetch('DATABASE_URL', '')
